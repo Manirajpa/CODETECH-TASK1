@@ -1,0 +1,37 @@
+#include <DHT.h> //includ DHT library 
+#include <LiquidCrystal.h> //include LiquidCrystal Libra 
+#define DHTPin 8 //Pin connection of DH
+#define DHTTYPE DHT22 //Define the type of DHT modul
+DHT dht(DHTPin, DHTTYPE); //Command to the DHT.h library 
+LiquidCrystal lcd(12,11,5,4,3,2); //Pin connection of LCD 
+void setup() {
+  // put your setup code here, to run once:
+   dht.begin(); //Start the sensor 
+   lcd.begin(16,2); //LCD screen is 16 char by 2 lines.
+   Serial.begin(9600);
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  float h = dht.readHumidity(); //Read value for Humidity 
+  float t = dht.readTemperature(); //Read value for Temp 
+ // t = t * 9/5+32; //Convert Celcius to Fahrenheit 
+  if(isnan(t)|| isnan(h)){ //Check the DHT sensor if working.
+    lcd.setCursor(0,0);
+    lcd.print("Failed to read DHT2");
+  }else{ 
+   // lcd.clear();
+    lcd.setCursor(0,0);
+    lcd.print("Humidity: ");
+    lcd.print(h);
+    lcd.print("%");
+    lcd.setCursor(0,1);
+    lcd.print("Temp: ");
+    lcd.print(t);
+    lcd.print("C");
+    Serial.print("Humid: ");
+    Serial.println(h);
+    Serial.print("Temp: ");
+    Serial.println(t);
+  }
+}
