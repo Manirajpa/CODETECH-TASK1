@@ -47,3 +47,4 @@ Integration with Other Systems:
 
 Collaboration: Sharing data with other weather stations, research institutions, or government agencies for broader analysis and forecasting.
 Automation: Integrating with automated systems for decision-making and response in sectors like agriculture, disaster management, and transportation.
+![image](https://github.com/user-attachments/assets/bd73e936-aa3d-4b2c-8e55-701a62e3bb3a)
